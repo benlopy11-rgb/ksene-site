@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K'séne — Le Meilleur Fast-Food de Lomé | Crêpes, Grillades, Livraison</title>
+<meta name="description" content="K'séne, le meilleur fast-food de Lomé à Sagbado. Crêpes, grillades, saveurs authentiques. Livraison rapide, drive, repas sur place. Appelez le +228 93 23 97 97.">
+<meta name="keywords" content="fast-food Lomé, restaurant Sagbado, livraison Lomé, K'séne Lomé, crêpes Lomé, grillades Lomé, restaurant Togo">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #d42b1e;
+  --red2: #b01f14;
+  --yellow: #f5a800;
+  --yellow2: #e09600;
+  --dark: #0d0603;
+  --dark2: #1a0c06;
+  --dark3: #251208;
+  --text: #fff8f0;
+  --muted: #9a7a60;
+  --border: rgba(245,168,0,0.15);
+  --card: rgba(255,255,255,0.03);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--dark);}
+::-webkit-scrollbar-thumb{background:var(--red);border-radius:2px;}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:500;
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 16px 5%;
+  background: rgba(13,6,3,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: padding .3s;
+}
+
+.nav-logo {
+  display:flex; align-items:center; gap:12px;
+  text-decoration:none;
+}
+
+.nav-logo-circle {
+  width:44px; height:44px; border-radius:50%;
+  background: linear-gradient(135deg, var(--yellow), var(--red));
+  display:flex; align-items:center; justify-content:center;
+  font-weight:900; font-size:1rem; color:#fff;
+  font-family:'Playfair Display', serif;
+  box-shadow: 0 4px 20px rgba(245,168,0,0.3);
+}
+
+.nav-logo span {
+  font-family:'Playfair Display', serif;
+  font-size:1.4rem; font-weight:900; color:var(--text);
+  letter-spacing:-.01em;
+}
+
+.nav-logo span em { color:var(--yellow); font-style:normal; }
+
+nav ul {
+  list-style:none; display:flex; gap:32px;
+}
+
+nav ul a {
+  color:var(--muted); text-decoration:none;
+  font-size:.88rem; font-weight:600; letter-spacing:.03em;
+  transition:color .2s;
+}
+nav ul a:hover { color:var(--yellow); }
+
+.nav-actions { display:flex; gap:10px; align-items:center; }
+
+.btn-call {
+  display:flex; align-items:center; gap:7px;
+  background:transparent; border:1px solid var(--border);
+  color:var(--text); padding:9px 18px; border-radius:100px;
+  font-size:.82rem; font-weight:700; cursor:pointer;
+  text-decoration:none; transition:border-color .2s, color .2s;
+}
+.btn-call:hover { border-color:var(--yellow); color:var(--yellow); }
+
+.btn-order-nav {
+  background: linear-gradient(135deg, var(--red), var(--red2));
+  color:#fff; padding:9px 22px; border-radius:100px;
+  font-size:.82rem; font-weight:700; cursor:pointer;
+  border:none; text-decoration:none;
+  box-shadow: 0 4px 20px rgba(212,43,30,0.35);
+  transition:transform .2s, box-shadow .2s;
+}
+.btn-order-nav:hover { transform:translateY(-1px); box-shadow:0 6px 28px rgba(212,43,30,0.5); }
+
+.hamburger {
+  display:none; flex-direction:column; gap:5px;
+  background:none; border:none; cursor:pointer; padding:4px;
+}
+.hamburger span {
+  width:24px; height:2px; background:var(--text); border-radius:2px;
+  transition:transform .3s, opacity .3s;
+}
+
+/* ── HERO ── */
+#hero {
+  min-height:100vh;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  text-align:center; padding:120px 5% 80px;
+  position:relative; overflow:hidden;
+}
+
+.hero-bg {
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(212,43,30,0.2) 0%, transparent 60%),
+    radial-gradient(ellipse at 0% 100%, rgba(245,168,0,0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 50%, rgba(212,43,30,0.08) 0%, transparent 50%);
+  pointer-events:none;
+}
+
+.hero-grid {
+  position:absolute; inset:0; opacity:.04;
+  background-image: linear-gradient(var(--yellow) 1px, transparent 1px),
+    linear-gradient(90deg, var(--yellow) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events:none;
+}
+
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(245,168,0,.1); border:1px solid rgba(245,168,0,.25);
+  color:var(--yellow); padding:7px 18px; border-radius:100px;
+  font-size:.75rem; font-weight:700; letter-spacing:.1em;
+  text-transform:uppercase; margin-bottom:28px;
+  animation:fadeUp .8s ease both;
+}
+
+.hero-badge::before {
+  content:''; width:6px; height:6px;
+  background:var(--yellow); border-radius:50%;
+  animation:blink 1.5s ease-in-out infinite;
+}
+
+#hero h1 {
+  font-family:'Playfair Display', serif;
+  font-size: clamp(3rem, 9vw, 7rem);
+  font-weight:900; line-height:1;
+  letter-spacing:-.03em;
+  animation:fadeUp .8s .1s ease both;
+  margin-bottom:8px;
+}
+
+#hero h1 .outline {
+  -webkit-text-stroke: 2px var(--yellow);
+  color:transparent;
+}
+
+.hero-sub-title {
+  font-size: clamp(1.1rem, 3vw, 1.8rem);
+  font-weight:300; color:var(--muted);
+  margin-bottom:20px;
+  animation:fadeUp .8s .2s ease both;
+}
+
+.hero-sub-title strong { color:var(--yellow); font-weight:700; }
+
+.hero-desc {
+  max-width:520px; color:var(--muted);
+  font-size:1rem; line-height:1.7; font-weight:400;
+  margin-bottom:44px;
+  animation:fadeUp .8s .3s ease both;
+}
+
+.hero-btns {
+  display:flex; gap:14px; justify-content:center;
+  flex-wrap:wrap; margin-bottom:60px;
+  animation:fadeUp .8s .4s ease both;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--red), var(--red2));
+  color:#fff; padding:16px 36px; border-radius:100px;
+  font-weight:700; font-size:1rem; cursor:pointer;
+  border:none; text-decoration:none;
+  box-shadow: 0 8px 32px rgba(212,43,30,.4);
+  transition:transform .2s, box-shadow .2s;
+  display:inline-flex; align-items:center; gap:8px;
+}
+.btn-primary:hover { transform:translateY(-3px); box-shadow:0 12px 40px rgba(212,43,30,.6); }
+
+.btn-secondary {
+  background:transparent; color:var(--text);
+  padding:16px 36px; border-radius:100px;
+  font-weight:600; font-size:1rem; cursor:pointer;
+  border:1px solid rgba(255,255,255,.15); text-decoration:none;
+  transition:border-color .2s, color .2s;
+  display:inline-flex; align-items:center; gap:8px;
+}
+.btn-secondary:hover { border-color:var(--yellow); color:var(--yellow); }
+
+.hero-stats {
+  display:flex; gap:48px; justify-content:center;
+  flex-wrap:wrap;
+  animation:fadeUp .8s .5s ease both;
+}
+
+.hero-stat { text-align:center; }
+.hero-stat-num {
+  font-family:'Playfair Display', serif;
+  font-size:2.2rem; font-weight:900;
+  color:var(--yellow); line-height:1;
+}
+.hero-stat-label { color:var(--muted); font-size:.8rem; font-weight:500; margin-top:4px; }
+
+/* ── SECTIONS COMMUNES ── */
+section { padding:90px 5%; }
+
+.section-tag {
+  display:inline-block;
+  font-size:.72rem; font-weight:700; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--yellow);
+  margin-bottom:14px;
+}
+
+h2.section-title {
+  font-family:'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight:900; letter-spacing:-.02em;
+  line-height:1.1; margin-bottom:16px;
+}
+
+.section-desc { color:var(--muted); font-size:1rem; max-width:500px; line-height:1.7; }
+
+/* ── SERVICES ── */
+#services { background: var(--dark2); }
+
+.services-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap:16px; margin-top:56px;
+}
+
+.service-item {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px; padding:32px 24px;
+  text-align:center;
+  transition:transform .3s, border-color .3s, background .3s;
+  cursor:default;
+}
+.service-item:hover {
+  transform:translateY(-6px);
+  border-color:rgba(245,168,0,.4);
+  background:rgba(245,168,0,.04);
+}
+
+.service-icon {
+  font-size:2.2rem; margin-bottom:16px;
+  display:block;
+}
+
+.service-item h3 {
+  font-size:1rem; font-weight:700;
+  margin-bottom:8px; color:var(--text);
+}
+
+.service-item p { font-size:.83rem; color:var(--muted); line-height:1.6; }
+
+/* ── MENU ── */
+#menu { background:var(--dark); }
+
+.menu-header { display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:20px; margin-bottom:48px; }
+
+.menu-link {
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(245,168,0,.1); border:1px solid rgba(245,168,0,.25);
+  color:var(--yellow); padding:10px 22px; border-radius:100px;
+  font-size:.85rem; font-weight:700; text-decoration:none;
+  transition:background .2s;
+}
+.menu-link:hover { background:rgba(245,168,0,.2); }
+
+.menu-categories {
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:20px;
+}
+
+.menu-card {
+  background:var(--dark3);
+  border:1px solid var(--border);
+  border-radius:20px; overflow:hidden;
+  transition:transform .3s, border-color .3s;
+}
+.menu-card:hover { transform:translateY(-4px); border-color:rgba(212,43,30,.4); }
+
+.menu-card-header {
+  padding:28px 24px 20px;
+  display:flex; align-items:center; gap:14px;
+}
+
+.menu-card-icon {
+  width:52px; height:52px; border-radius:14px;
+  background:rgba(212,43,30,.15);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.5rem; flex-shrink:0;
+}
+
+.menu-card-header h3 {
+  font-family:'Playfair Display', serif;
+  font-size:1.2rem; font-weight:700;
+}
+
+.menu-card-header p { font-size:.82rem; color:var(--muted); margin-top:4px; }
+
+.menu-items { padding:0 24px 24px; display:flex; flex-direction:column; gap:12px; }
+
+.menu-item {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 0; border-bottom:1px solid rgba(255,255,255,.05);
+}
+.menu-item:last-child { border-bottom:none; }
+.menu-item-name { font-size:.9rem; font-weight:500; }
+.menu-item-price { font-size:.88rem; font-weight:700; color:var(--yellow); }
+
+/* ── HORAIRES ── */
+#horaires { background:var(--dark2); }
+
+.horaires-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:56px; }
+
+.horaires-table { display:flex; flex-direction:column; gap:2px; }
+
+.horaire-row {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:14px 20px; border-radius:12px;
+  background:rgba(255,255,255,.02);
+  border:1px solid rgba(255,255,255,.04);
+  transition:background .2s;
+}
+.horaire-row:hover { background:rgba(245,168,0,.05); }
+.horaire-row.today { background:rgba(245,168,0,.08); border-color:rgba(245,168,0,.2); }
+
+.horaire-day { font-size:.92rem; font-weight:600; }
+.horaire-day.today-label { color:var(--yellow); }
+.horaire-time { font-size:.88rem; color:var(--muted); font-weight:500; }
+.horaire-open { color:#4ade80; font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+
+.horaires-info {
+  display:flex; flex-direction:column; gap:20px; justify-content:center;
+}
+
+.info-card {
+  background:var(--dark3); border:1px solid var(--border);
+  border-radius:20px; padding:28px;
+}
+
+.info-card h3 {
+  font-size:1.1rem; font-weight:700; margin-bottom:16px;
+  display:flex; align-items:center; gap:10px;
+}
+
+.info-card ul {
+  list-style:none; display:flex; flex-direction:column; gap:10px;
+}
+
+.info-card ul li {
+  font-size:.88rem; color:var(--muted);
+  display:flex; align-items:center; gap:10px;
+}
+.info-card ul li::before {
+  content:'✓'; color:#4ade80; font-weight:700; font-size:.8rem;
+}
+
+/* ── GALERIE ── */
+#galerie { background:var(--dark); }
+
+.galerie-grid {
+  display:grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 260px 260px;
+  gap:12px; margin-top:48px;
+}
+
+.galerie-item {
+  border-radius:16px; overflow:hidden;
+  position:relative; cursor:pointer;
+}
+
+.galerie-item:first-child { grid-row:span 2; }
+
+.galerie-img {
+  width:100%; height:100%; object-fit:cover;
+  transition:transform .4s;
+  background: linear-gradient(135deg, var(--dark3) 0%, var(--dark2) 100%);
+  display:flex; align-items:center; justify-content:center;
+  font-size:3rem;
+}
+
+.galerie-item:hover .galerie-img { transform:scale(1.05); }
+
+.galerie-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,.7) 0%, transparent 60%);
+  opacity:0; transition:opacity .3s;
+  display:flex; align-items:flex-end; padding:20px;
+}
+.galerie-item:hover .galerie-overlay { opacity:1; }
+.galerie-overlay span { font-size:.85rem; font-weight:700; }
+
+/* Real images from restaurant */
+.galerie-real {
+  width:100%; height:100%;
+  object-fit:cover;
+}
+
+/* ── COMMANDE ── */
+#commander { background: linear-gradient(135deg, var(--red2) 0%, #8a1510 100%); }
+
+#commander .inner {
+  display:flex; align-items:center; justify-content:space-between;
+  gap:40px; flex-wrap:wrap;
+}
+
+#commander h2 {
+  font-family:'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight:900;
+}
+
+#commander p { color:rgba(255,255,255,.75); font-size:1rem; margin-top:10px; max-width:400px; }
+
+.commander-btns { display:flex; gap:14px; flex-wrap:wrap; }
+
+.btn-white {
+  background:#fff; color:var(--red);
+  padding:16px 32px; border-radius:100px;
+  font-weight:800; font-size:.95rem; cursor:pointer;
+  border:none; text-decoration:none;
+  transition:transform .2s, box-shadow .2s;
+  display:inline-flex; align-items:center; gap:8px;
+}
+.btn-white:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.3); }
+
+.btn-white-outline {
+  background:transparent; color:#fff;
+  padding:16px 32px; border-radius:100px;
+  font-weight:700; font-size:.95rem; cursor:pointer;
+  border:2px solid rgba(255,255,255,.4); text-decoration:none;
+  transition:border-color .2s, background .2s;
+  display:inline-flex; align-items:center; gap:8px;
+}
+.btn-white-outline:hover { border-color:#fff; background:rgba(255,255,255,.1); }
+
+/* ── RESERVATION ── */
+#reservation { background:var(--dark2); }
+
+.reservation-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; margin-top:56px; }
+
+.form-group { display:flex; flex-direction:column; gap:8px; margin-bottom:16px; }
+.form-group label { font-size:.78rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background:rgba(255,255,255,.04); border:1px solid var(--border);
+  border-radius:12px; padding:13px 16px;
+  color:var(--text); font-family:'Outfit', sans-serif;
+  font-size:.92rem; outline:none; transition:border-color .2s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color:rgba(245,168,0,.4); }
+.form-group select option { background:#1a0c06; }
+.form-group textarea { min-height:100px; resize:vertical; }
+
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+
+.reservation-info { display:flex; flex-direction:column; gap:20px; justify-content:center; }
+
+.rinfo-card {
+  display:flex; align-items:flex-start; gap:16px;
+  background:var(--dark3); border:1px solid var(--border);
+  border-radius:16px; padding:22px;
+}
+.rinfo-icon { font-size:1.6rem; flex-shrink:0; margin-top:2px; }
+.rinfo-text h4 { font-size:1rem; font-weight:700; margin-bottom:5px; }
+.rinfo-text p { font-size:.85rem; color:var(--muted); line-height:1.6; }
+.rinfo-text a { color:var(--yellow); text-decoration:none; }
+
+/* ── TEMOIGNAGES ── */
+#temoignages { background:var(--dark); }
+
+.temoignages-grid {
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:20px; margin-top:56px;
+}
+
+.temoignage-card {
+  background:var(--dark3); border:1px solid var(--border);
+  border-radius:20px; padding:28px;
+  transition:transform .3s;
+}
+.temoignage-card:hover { transform:translateY(-4px); }
+
+.stars { color:var(--yellow); font-size:1rem; margin-bottom:14px; }
+
+.temoignage-text {
+  font-size:.92rem; color:var(--muted);
+  line-height:1.7; margin-bottom:20px;
+  font-style:italic;
+}
+
+.temoignage-author {
+  display:flex; align-items:center; gap:12px;
+}
+.author-avatar {
+  width:40px; height:40px; border-radius:50%;
+  background:linear-gradient(135deg, var(--red), var(--yellow));
+  display:flex; align-items:center; justify-content:center;
+  font-weight:800; font-size:.9rem;
+}
+.author-name { font-size:.9rem; font-weight:700; }
+.author-date { font-size:.75rem; color:var(--muted); margin-top:2px; }
+
+/* ── MAPS ── */
+#localisation { background:var(--dark2); }
+
+.maps-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:56px; }
+
+.maps-frame {
+  border-radius:20px; overflow:hidden;
+  border:1px solid var(--border); height:350px;
+}
+
+.maps-frame iframe { width:100%; height:100%; border:none; }
+
+.maps-info { display:flex; flex-direction:column; gap:18px; justify-content:center; }
+
+.maps-info-item {
+  display:flex; align-items:flex-start; gap:14px;
+  padding:20px; background:var(--dark3);
+  border:1px solid var(--border); border-radius:14px;
+}
+.maps-info-item .mii-icon { font-size:1.4rem; flex-shrink:0; }
+.maps-info-item h4 { font-size:.85rem; font-weight:700; margin-bottom:4px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
+.maps-info-item p { font-size:.92rem; font-weight:500; }
+.maps-info-item a { color:var(--yellow); text-decoration:none; }
+
+/* ── CONTACT ── */
+#contact { background:var(--dark); }
+
+.contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; margin-top:56px; }
+
+/* ── FOOTER ── */
+footer {
+  background:var(--dark2);
+  padding:60px 5% 30px;
+  border-top:1px solid var(--border);
+}
+
+.footer-grid {
+  display:grid; grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:40px; margin-bottom:48px;
+}
+
+.footer-brand h3 {
+  font-family:'Playfair Display', serif;
+  font-size:1.6rem; font-weight:900; margin-bottom:14px;
+}
+.footer-brand h3 em { color:var(--yellow); font-style:normal; }
+
+.footer-brand p { color:var(--muted); font-size:.88rem; line-height:1.7; max-width:280px; }
+
+.footer-col h4 {
+  font-size:.8rem; font-weight:700; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--yellow);
+  margin-bottom:18px;
+}
+
+.footer-col ul { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.footer-col ul li a {
+  color:var(--muted); text-decoration:none; font-size:.88rem;
+  transition:color .2s;
+}
+.footer-col ul li a:hover { color:var(--yellow); }
+.footer-col ul li { color:var(--muted); font-size:.88rem; }
+
+.footer-bottom {
+  padding-top:24px; border-top:1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:16px;
+}
+.footer-bottom p { color:var(--muted); font-size:.8rem; }
+.footer-bottom a { color:var(--yellow); text-decoration:none; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to { opacity:1; transform:translateY(0); }
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+.reveal { opacity:0; transform:translateY(30px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity:1; transform:none; }
+
+/* ── WHATSAPP FLOAT ── */
+#wa-float {
+  position:fixed; bottom:110px; right:28px; z-index:400;
+  width:54px; height:54px; border-radius:50%;
+  background:#25d366;
+  display:flex; align-items:center; justify-content:center;
+  text-decoration:none; font-size:1.5rem;
+  box-shadow:0 4px 20px rgba(37,211,102,.4);
+  transition:transform .2s, box-shadow .2s;
+  animation:popIn .5s .5s cubic-bezier(.175,.885,.32,1.275) both;
+}
+#wa-float:hover { transform:scale(1.1); box-shadow:0 8px 30px rgba(37,211,102,.6); }
+
+/* ── WIDGET CHATBOT ── */
+#ksene-widget * { box-sizing:border-box; font-family:'Outfit', sans-serif; }
+
+#ksene-widget-btn {
+  position:fixed; bottom:28px; right:28px;
+  width:58px; height:58px;
+  background:linear-gradient(135deg, var(--red), var(--red2));
+  border-radius:50%; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.5rem;
+  box-shadow:0 6px 28px rgba(212,43,30,.5);
+  z-index:9999; border:none;
+  transition:transform .2s, box-shadow .2s;
+  animation:popIn .5s .7s cubic-bezier(.175,.885,.32,1.275) both;
+}
+#ksene-widget-btn:hover { transform:scale(1.1); }
+
+.widget-notif {
+  position:absolute; top:2px; right:2px;
+  width:14px; height:14px; background:var(--yellow);
+  border-radius:50%; border:2px solid var(--dark);
+  animation:blink 2s ease-in-out infinite;
+}
+
+#ksene-widget-window {
+  position:fixed; bottom:100px; right:28px;
+  width:340px; height:500px;
+  background:#16161d; border:1px solid rgba(144,164,174,.15);
+  border-radius:20px;
+  box-shadow:0 24px 80px rgba(0,0,0,.7);
+  z-index:9998; display:none; flex-direction:column;
+  overflow:hidden;
+}
+#ksene-widget-window.open { display:flex; animation:slideUp .3s ease both; }
+
+.kw-header {
+  background:linear-gradient(135deg, var(--red), var(--red2));
+  padding:14px 16px; display:flex; align-items:center; gap:12px; flex-shrink:0;
+}
+.kw-avatar {
+  width:40px; height:40px; background:rgba(255,255,255,.15);
+  border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-size:1.2rem; border:2px solid rgba(255,255,255,.2); flex-shrink:0;
+}
+.kw-info h3 { font-size:.92rem; font-weight:800; color:#fff; margin:0; }
+.kw-status { display:flex; align-items:center; gap:5px; font-size:.7rem; color:rgba(255,255,255,.8); margin-top:2px; }
+.kw-dot { width:6px; height:6px; background:#4ade80; border-radius:50%; animation:blink 2s ease-in-out infinite; }
+.kw-close {
+  margin-left:auto; background:rgba(255,255,255,.15); border:none;
+  color:#fff; width:28px; height:28px; border-radius:50%; cursor:pointer;
+  font-size:.9rem; display:flex; align-items:center; justify-content:center;
+}
+.kw-close:hover { background:rgba(255,255,255,.25); }
+
+.kw-messages {
+  flex:1; padding:14px 12px; overflow-y:auto;
+  display:flex; flex-direction:column; gap:10px; scroll-behavior:smooth;
+}
+.kw-messages::-webkit-scrollbar { width:3px; }
+.kw-messages::-webkit-scrollbar-thumb { background:rgba(212,43,30,.3); border-radius:2px; }
+
+.kw-msg { display:flex; gap:8px; animation:msgIn .25s ease both; }
+.kw-msg.user { flex-direction:row-reverse; }
+.kw-msg-av {
+  width:28px; height:28px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.8rem; flex-shrink:0; margin-top:2px;
+}
+.kw-msg.bot .kw-msg-av { background:var(--red); }
+.kw-msg.user .kw-msg-av { background:rgba(245,168,0,.2); }
+.kw-bubble {
+  max-width:80%; padding:10px 13px; border-radius:16px;
+  font-size:.83rem; line-height:1.65; font-weight:500;
+}
+.kw-msg.bot .kw-bubble {
+  background:rgba(255,255,255,.04); border:1px solid rgba(144,164,174,.15);
+  border-bottom-left-radius:4px; color:#e8e8f0;
+}
+.kw-msg.user .kw-bubble { background:var(--red); border-bottom-right-radius:4px; color:#fff; }
+
+.kw-quick { display:flex; flex-wrap:wrap; gap:6px; padding:0 12px 10px; flex-shrink:0; }
+.kw-qbtn {
+  background:rgba(245,168,0,.08); border:1px solid rgba(245,168,0,.2);
+  color:var(--yellow); padding:5px 11px; border-radius:100px;
+  font-size:.72rem; font-weight:700; cursor:pointer;
+  transition:background .2s; font-family:inherit;
+}
+.kw-qbtn:hover { background:rgba(245,168,0,.18); }
+
+.kw-input-row {
+  padding:10px 12px; border-top:1px solid rgba(144,164,174,.12);
+  display:flex; gap:8px; align-items:center;
+  background:rgba(0,0,0,.2); flex-shrink:0;
+}
+.kw-input {
+  flex:1; background:rgba(255,255,255,.05);
+  border:1px solid rgba(144,164,174,.15); border-radius:100px;
+  padding:10px 14px; color:#e8e8f0; font-family:inherit;
+  font-size:.83rem; font-weight:500; outline:none; transition:border-color .2s;
+}
+.kw-input::placeholder { color:#7070a0; }
+.kw-input:focus { border-color:rgba(245,168,0,.35); }
+.kw-send {
+  width:38px; height:38px; background:var(--red);
+  border:none; border-radius:50%; color:#fff; font-size:.9rem;
+  cursor:pointer; display:flex; align-items:center; justify-content:center;
+  transition:transform .15s; flex-shrink:0;
+}
+.kw-send:hover { transform:scale(1.08); }
+.kw-send:disabled { opacity:.4; cursor:not-allowed; transform:none; }
+.kw-powered { text-align:center; font-size:.65rem; color:#7070a0; padding:6px; flex-shrink:0; }
+.kw-powered strong { color:var(--yellow); }
+
+.kw-typing { display:flex; gap:4px; align-items:center; padding:8px 12px; }
+.kw-typing span {
+  width:6px; height:6px; background:#7070a0; border-radius:50%;
+  animation:typing .8s ease-in-out infinite;
+}
+.kw-typing span:nth-child(2) { animation-delay:.15s; }
+.kw-typing span:nth-child(3) { animation-delay:.3s; }
+
+@keyframes popIn { from{opacity:0;transform:scale(.5)} to{opacity:1;transform:scale(1)} }
+@keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+@keyframes msgIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+@keyframes typing { 0%,60%,100%{transform:translateY(0);opacity:.5} 30%{transform:translateY(-5px);opacity:1} }
+
+/* ── MOBILE ── */
+@media(max-width:900px) {
+  nav ul { display:none; }
+  .hamburger { display:flex; }
+  .horaires-grid, .maps-grid, .reservation-grid, .contact-grid { grid-template-columns:1fr; }
+  .footer-grid { grid-template-columns:1fr 1fr; }
+  .galerie-grid { grid-template-columns:1fr 1fr; grid-template-rows:auto; }
+  .galerie-item:first-child { grid-row:span 1; }
+  #commander .inner { flex-direction:column; text-align:center; }
+  #ksene-widget-window { width:calc(100vw - 40px); right:20px; }
+}
+
+@media(max-width:600px) {
+  .footer-grid { grid-template-columns:1fr; }
+  .form-row { grid-template-columns:1fr; }
+  .hero-stats { gap:28px; }
+  .galerie-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <img src="data:image/jpeg;base64,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" alt="K'séne Logo" style="width:48px;height:48px;border-radius:50%;object-fit:cover;">
+  </a>
+  <ul id="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#horaires">Horaires</a></li>
+    <li><a href="#reservation">Réserver</a></li>
+    <li><a href="#localisation">Localisation</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="tel:+22893239797" class="btn-call">📞 93 23 97 97</a>
+    <a href="#commander" class="btn-order-nav">Commander</a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-badge">🔥 Fast-Food N°1 à Lomé, Togo</div>
+
+  <h1>Bienvenue<br>chez <span class="outline">K'séne</span></h1>
+
+  <p class="hero-sub-title">Crêpes · Grillades · <strong>Saveurs authentiques</strong></p>
+
+  <p class="hero-desc">
+    Le fast-food qui mêle authenticité africaine et modernité. À Sagbado, Lomé — pour manger sur place, commander en drive ou se faire livrer en 30 min.
+  </p>
+
+  <div class="hero-btns">
+    <a href="#commander" class="btn-primary">🍔 Commander maintenant</a>
+    <a href="#reservation" class="btn-secondary">📅 Réserver une table</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">+5</div>
+      <div class="hero-stat-label">Ans d'expérience</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">100%</div>
+      <div class="hero-stat-label">Satisfaction client</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">30min</div>
+      <div class="hero-stat-label">Livraison rapide</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">7j/7</div>
+      <div class="hero-stat-label">Ouvert toute la semaine</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="reveal">
+    <div class="section-tag">✦ Ce qu'on propose</div>
+    <h2 class="section-title">Nos Services</h2>
+    <p class="section-desc">Profitez de nos multiples façons de déguster K'séne, où que vous soyez.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-item reveal">
+      <span class="service-icon">🏠</span>
+      <h3>Repas sur place</h3>
+      <p>Profitez de notre terrasse décontractée, idéale pour les groupes et les familles.</p>
+    </div>
+    <div class="service-item reveal">
+      <span class="service-icon">🛵</span>
+      <h3>Livraison rapide</h3>
+      <p>Livraison sans contact disponible. Votre commande chez vous en 30 minutes.</p>
+    </div>
+    <div class="service-item reveal">
+      <span class="service-icon">🚗</span>
+      <h3>Service Drive</h3>
+      <p>Commandez depuis votre voiture sans descendre. Rapide et pratique.</p>
+    </div>
+    <div class="service-item reveal">
+      <span class="service-icon">🥡</span>
+      <h3>Vente à emporter</h3>
+      <p>Commandez, récupérez et dégustez où vous voulez.</p>
+    </div>
+    <div class="service-item reveal">
+      <span class="service-icon">🎉</span>
+      <h3>Traiteur & Groupes</h3>
+      <p>Organisez vos événements avec notre service traiteur. Devis sur demande.</p>
+    </div>
+    <div class="service-item reveal">
+      <span class="service-icon">☕</span>
+      <h3>Cafés & Desserts</h3>
+      <p>Une sélection de cafés, desserts maison et boissons pour toutes les envies.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="menu-header reveal">
+    <div>
+      <div class="section-tag">✦ Notre carte</div>
+      <h2 class="section-title">Le Menu K'séne</h2>
+      <p class="section-desc">Crêpes généreuses, grillades savoureuses et spécialités maison.</p>
+    </div>
+    <a href="https://creperieksene.com/#menu" target="_blank" class="menu-link">
+      Voir le menu complet →
+    </a>
+  </div>
+
+  <div class="menu-categories">
+    <div class="menu-card reveal">
+      <div class="menu-card-header">
+        <div class="menu-card-icon">🥞</div>
+        <div>
+          <h3>Crêpes</h3>
+          <p>Sucrées & salées, faites maison</p>
+        </div>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item"><span class="menu-item-name">Crêpe Nature</span><span class="menu-item-price">À découvrir</span></div>
+        <div class="menu-item"><span class="menu-item-name">Crêpe Chocolat</span><span class="menu-item-price">À découvrir</span></div>
+        <div class="menu-item"><span class="menu-item-name">Crêpe Jambon-Fromage</span><span class="menu-item-price">À découvrir</span></div>
+        <div class="menu-item"><span class="menu-item-name">Crêpe Spéciale K'séne</span><span class="menu-item-price">À découvrir</span></div>
+      </div>
+    </div>
+
+    <div class="menu-card reveal">
+      <div class="menu-card-header">
+        <div class="menu-card-icon">🍖</div>
+        <div>
+          <h3>Grillades</h3>
+          <p>Cuites à la braise, goût authentique</p>
+        </div>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item"><span class="menu-item-name">Poulet Grillé</span><span class="menu-item-price">À découvrir</span></div>
+        <div class="menu-item"><span class="menu-item-name">Grillades Mixtes</span><span class="menu-item-price">À découvrir</span></div>
+        <div class="menu-item"><span class="menu-item-name">Brochettes</span><span class="menu-item-price">À découvrir</span></div>
+        <div class="menu-item"><span class="menu-item-name">Grillades + Accompagnement</span><span class="menu-item-price">À découvrir</span></div>
+      </div>
+    </div>
+
+    <div class="menu-card reveal">
+      <div class="menu-card-header">
+        <div class="menu-card-icon">🍟</div>
+        <div>
+          <h3>Fast-Food</h3>
+          <p>Burgers, frites, sandwichs</p>
+        </div>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item"><span class="menu-item-name">Burger K'séne</span><span class="menu-item-price">À découvrir</span></div>
+        <div class="menu-item"><span class="menu-item-name">Frites Maison</span><span class="menu-item-price">À découvrir</span></div>
+        <div class="menu-item"><span class="menu-item-name">Hot-dog</span><span class="menu-item-price">À découvrir</span></div>
+        <div class="menu-item"><span class="menu-item-name">Menu Complet</span><span class="menu-item-price">À découvrir</span></div>
+      </div>
+    </div>
+
+    <div class="menu-card reveal">
+      <div class="menu-card-header">
+        <div class="menu-card-icon">🥤</div>
+        <div>
+          <h3>Boissons & Desserts</h3>
+          <p>Cafés, jus frais, douceurs</p>
+        </div>
+      </div>
+      <div class="menu-items">
+        <div class="menu-item"><span class="menu-item-name">Fruits frais pressés</span><span class="menu-item-price">À découvrir</span></div>
+        <div class="menu-item"><span class="menu-item-name">Café & Thé</span><span class="menu-item-price">À découvrir</span></div>
+        <div class="menu-item"><span class="menu-item-name">Desserts maison</span><span class="menu-item-price">À découvrir</span></div>
+        <div class="menu-item"><span class="menu-item-name">Sodas & Eaux</span><span class="menu-item-price">À découvrir</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:36px;" class="reveal">
+    <a href="https://creperieksene.com/#menu" target="_blank" class="btn-primary">🍽️ Voir tous les prix sur le menu complet</a>
+  </div>
+</section>
+
+<!-- HORAIRES -->
+<section id="horaires">
+  <div class="reveal">
+    <div class="section-tag">✦ Quand nous visiter</div>
+    <h2 class="section-title">Horaires d'Ouverture</h2>
+    <p class="section-desc">Nous sommes ouverts presque tous les jours pour vous accueillir.</p>
+  </div>
+
+  <div class="horaires-grid">
+    <div class="horaires-table reveal">
+      <div class="horaire-row" id="day-0"><span class="horaire-day">Lundi</span><span class="horaire-time">09:00 – 21:30</span></div>
+      <div class="horaire-row" id="day-2"><span class="horaire-day">Mardi</span><span class="horaire-time">06:00 – 23:00</span></div>
+      <div class="horaire-row" id="day-3"><span class="horaire-day">Mercredi</span><span class="horaire-time">06:00 – 23:00</span></div>
+      <div class="horaire-row" id="day-4"><span class="horaire-day">Jeudi</span><span class="horaire-time">06:00 – 23:00</span></div>
+      <div class="horaire-row" id="day-5"><span class="horaire-day">Vendredi</span><span class="horaire-time">06:00 – 23:00</span></div>
+      <div class="horaire-row" id="day-6"><span class="horaire-day">Samedi</span><span class="horaire-time">06:00 – 23:00</span></div>
+      <div class="horaire-row" id="day-1"><span class="horaire-day">Dimanche</span><span class="horaire-time">06:00 – 23:00</span></div>
+    </div>
+
+    <div class="horaires-info reveal">
+      <div class="info-card">
+        <h3>🅿️ Parking & Accès</h3>
+        <ul>
+          <li>Parking gratuit sur place</li>
+          <li>Parking gratuit dans la rue</li>
+          <li>Accès fauteuil roulant</li>
+          <li>Toilettes accessibles PMR</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h3>🌟 Ambiance & Clientèle</h3>
+        <ul>
+          <li>Terrasse décontractée</li>
+          <li>Convient aux enfants</li>
+          <li>Idéal pour les groupes</li>
+          <li>Populaire pour déjeuner & dîner</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIE -->
+<section id="galerie">
+  <div class="reveal">
+    <div class="section-tag">✦ Notre ambiance</div>
+    <h2 class="section-title">Galerie K'séne</h2>
+    <p class="section-desc">Découvrez notre espace chaleureux et notre cuisine généreuse.</p>
+  </div>
+
+  <div class="galerie-grid reveal">
+    <div class="galerie-item">
+      <div class="galerie-img" style="font-size:8rem; background:linear-gradient(135deg,#1a0c06,#2a1208);">🍽️</div>
+      <div class="galerie-overlay"><span>Notre restaurant</span></div>
+    </div>
+    <div class="galerie-item">
+      <div class="galerie-img" style="font-size:5rem; background:linear-gradient(135deg,#251208,#1a0c06);">🥞</div>
+      <div class="galerie-overlay"><span>Nos crêpes</span></div>
+    </div>
+    <div class="galerie-item">
+      <div class="galerie-img" style="font-size:5rem; background:linear-gradient(135deg,#1a0c06,#200e05);">🍖</div>
+      <div class="galerie-overlay"><span>Nos grillades</span></div>
+    </div>
+    <div class="galerie-item">
+      <div class="galerie-img" style="font-size:5rem; background:linear-gradient(135deg,#200e05,#1a0c06);">🍔</div>
+      <div class="galerie-overlay"><span>Nos burgers</span></div>
+    </div>
+    <div class="galerie-item">
+      <div class="galerie-img" style="font-size:5rem; background:linear-gradient(135deg,#1a0c06,#251208);">☕</div>
+      <div class="galerie-overlay"><span>Cafés & Desserts</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMANDER -->
+<section id="commander">
+  <div class="inner">
+    <div>
+      <h2>Prêt à commander ?</h2>
+      <p>Livraison en 30 min · Drive · Vente à emporter. Choisissez votre mode de commande.</p>
+    </div>
+    <div class="commander-btns">
+      <a href="tel:+22893239797" class="btn-white">📞 Commander par téléphone</a>
+      <a href="https://wa.me/22893239797" target="_blank" class="btn-white-outline">💬 Commander sur WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section id="reservation">
+  <div class="reveal">
+    <div class="section-tag">✦ Réservez votre table</div>
+    <h2 class="section-title">Réservation en ligne</h2>
+    <p class="section-desc">Réservez votre table à l'avance pour une expérience sans attente.</p>
+  </div>
+
+  <div class="reservation-grid">
+    <form onsubmit="handleReservation(event)" class="reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Prénom & Nom</label>
+          <input type="text" placeholder="Kofi Amewu" required>
+        </div>
+        <div class="form-group">
+          <label>Téléphone</label>
+          <input type="tel" placeholder="+228 XX XX XX XX" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Date</label>
+          <input type="date" required>
+        </div>
+        <div class="form-group">
+          <label>Heure</label>
+          <input type="time" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Nombre de personnes</label>
+        <select>
+          <option>1 personne</option>
+          <option>2 personnes</option>
+          <option>3–4 personnes</option>
+          <option>5–8 personnes</option>
+          <option>Plus de 8 (groupe)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message (optionnel)</label>
+        <textarea placeholder="Occasion spéciale, allergies, préférences..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">
+        ✅ Confirmer ma réservation
+      </button>
+    </form>
+
+    <div class="reservation-info reveal">
+      <div class="rinfo-card">
+        <div class="rinfo-icon">📍</div>
+        <div class="rinfo-text">
+          <h4>Notre adresse</h4>
+          <p>Sagbado, Route Sanol, Lomé, Togo<br>Code Maps : <strong>54VP+GV Lomé</strong></p>
+        </div>
+      </div>
+      <div class="rinfo-card">
+        <div class="rinfo-icon">📞</div>
+        <div class="rinfo-text">
+          <h4>Réserver par téléphone</h4>
+          <p><a href="tel:+22893239797">+228 93 23 97 97</a><br>Disponible tous les jours</p>
+        </div>
+      </div>
+      <div class="rinfo-card">
+        <div class="rinfo-icon">💬</div>
+        <div class="rinfo-text">
+          <h4>Réserver sur WhatsApp</h4>
+          <p><a href="https://wa.me/22893239797" target="_blank">Envoyer un message WhatsApp</a><br>Réponse rapide garantie</p>
+        </div>
+      </div>
+      <div class="rinfo-card">
+        <div class="rinfo-icon">⏰</div>
+        <div class="rinfo-text">
+          <h4>Horaires</h4>
+          <p>Mar – Dim : 06h00 – 23h00<br>Lun : 09h00 – 21h30</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEMOIGNAGES -->
+<section id="temoignages">
+  <div class="reveal">
+    <div class="section-tag">✦ Ce qu'ils disent</div>
+    <h2 class="section-title">Témoignages Clients</h2>
+    <p class="section-desc">Ils ont testé K'séne et ils en parlent mieux que nous.</p>
+  </div>
+
+  <div class="temoignages-grid">
+    <div class="temoignage-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="temoignage-text">"Les meilleures crêpes de Lomé ! L'ambiance est super décontractée, le service rapide. Je viens au moins deux fois par semaine !"</p>
+      <div class="temoignage-author">
+        <div class="author-avatar">AK</div>
+        <div><div class="author-name">Ama Kokou</div><div class="author-date">Client fidèle · Lomé</div></div>
+      </div>
+    </div>
+    <div class="temoignage-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="temoignage-text">"Livraison en moins de 30 minutes, plats chauds et délicieux. Le poulet grillé est exceptionnel. Je recommande vivement !"</p>
+      <div class="temoignage-author">
+        <div class="author-avatar">KE</div>
+        <div><div class="author-name">Koffi Edem</div><div class="author-date">Client · Sagbado</div></div>
+      </div>
+    </div>
+    <div class="temoignage-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="temoignage-text">"Nous avons organisé un repas de groupe ici pour 15 personnes. Service impeccable, tout le monde est reparti satisfait. Bravo K'séne !"</p>
+      <div class="temoignage-author">
+        <div class="author-avatar">FA</div>
+        <div><div class="author-name">Fatou Addo</div><div class="author-date">Groupe · Lomé</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCALISATION -->
+<section id="localisation">
+  <div class="reveal">
+    <div class="section-tag">✦ Nous trouver</div>
+    <h2 class="section-title">Notre Localisation</h2>
+    <p class="section-desc">Situés à Sagbado, facilement accessible avec parking gratuit.</p>
+  </div>
+
+  <div class="maps-grid">
+    <div class="maps-frame reveal">
+      <iframe
+        src="https://maps.google.com/maps?q=54VP%2BGV+Lom%C3%A9&output=embed"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+    <div class="maps-info reveal">
+      <div class="maps-info-item">
+        <div class="mii-icon">📍</div>
+        <div>
+          <h4>Adresse</h4>
+          <p>Sagbado, Route Sanol<br>Lomé, Togo</p>
+        </div>
+      </div>
+      <div class="maps-info-item">
+        <div class="mii-icon">🗺️</div>
+        <div>
+          <h4>Code Google Maps</h4>
+          <p><a href="https://maps.google.com/?q=54VP+GV+Lomé" target="_blank">54VP+GV Lomé →</a></p>
+        </div>
+      </div>
+      <div class="maps-info-item">
+        <div class="mii-icon">📞</div>
+        <div>
+          <h4>Téléphone</h4>
+          <p><a href="tel:+22893239797">+228 93 23 97 97</a></p>
+        </div>
+      </div>
+      <div class="maps-info-item">
+        <div class="mii-icon">🅿️</div>
+        <div>
+          <h4>Parking</h4>
+          <p>Gratuit sur place et dans la rue</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="section-tag">✦ Nous écrire</div>
+      <h2 class="section-title">Contactez-nous</h2>
+      <p class="section-desc">Une question, une suggestion ou une commande spéciale ? On vous répond vite.</p>
+      <br>
+      <form onsubmit="handleContact(event)">
+        <div class="form-group">
+          <label>Votre nom</label>
+          <input type="text" placeholder="Votre nom complet" required>
+        </div>
+        <div class="form-group">
+          <label>Téléphone / Email</label>
+          <input type="text" placeholder="+228 XX XX XX XX ou email@..." required>
+        </div>
+        <div class="form-group">
+          <label>Votre message</label>
+          <textarea placeholder="Votre message..." required></textarea>
+        </div>
+        <button type="submit" class="btn-primary">📨 Envoyer le message</button>
+      </form>
+    </div>
+
+    <div class="reveal" style="display:flex;flex-direction:column;gap:20px;justify-content:center;">
+      <div class="info-card">
+        <h3>📱 Réseaux & Contact rapide</h3>
+        <ul>
+          <li><a href="tel:+22893239797" style="color:var(--yellow);text-decoration:none;">📞 +228 93 23 97 97</a></li>
+          <li><a href="https://wa.me/22893239797" target="_blank" style="color:#25d366;text-decoration:none;">💬 WhatsApp</a></li>
+          <li><a href="https://creperieksene.com/#menu" target="_blank" style="color:var(--yellow);text-decoration:none;">🌐 creperieksene.com</a></li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h3>🤖 Assistant IA disponible</h3>
+        <ul>
+          <li>Réponses instantanées 24h/24</li>
+          <li>Info menu, horaires, livraison</li>
+          <li>Cliquez sur le bouton rouge 👉</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="data:image/jpeg;base64,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" alt="K'séne" style="width:70px;height:70px;border-radius:50%;object-fit:cover;margin-bottom:12px;display:block;">
+      <p>Le meilleur fast-food de Lomé. Crêpes, grillades et saveurs authentiques depuis plus de 5 ans à Sagbado, Togo.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#horaires">Horaires</a></li>
+        <li><a href="#reservation">Réservation</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Horaires</h4>
+      <ul>
+        <li>Lun : 09h–21h30</li>
+        <li>Mar–Dim : 06h–23h</li>
+        <li>Livraison 7j/7</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+22893239797">+228 93 23 97 97</a></li>
+        <li>Sagbado, Rte Sanol</li>
+        <li>Lomé, Togo 🇹🇬</li>
+        <li><a href="https://wa.me/22893239797">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 K'séne Lomé — Tous droits réservés | Site créé par <a href="#">Ray Wav</a></p>
+    <p>fast-food Lomé · restaurant Sagbado · livraison Lomé · K'séne Togo</p>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOTTANT -->
+<a id="wa-float" href="https://wa.me/22893239797" target="_blank" title="WhatsApp K'séne">💬</a>
+
+<!-- WIDGET IA -->
+<div id="ksene-widget">
+  <button id="ksene-widget-btn" onclick="kwToggle()" title="Assistant IA K'séne">
+    🤖
+    <div class="widget-notif"></div>
+  </button>
+
+  <div id="ksene-widget-window">
+    <div class="kw-header">
+      <div class="kw-avatar">🍽️</div>
+      <div class="kw-info">
+        <h3>Assistant K'séne</h3>
+        <div class="kw-status"><div class="kw-dot"></div>En ligne 24h/24</div>
+      </div>
+      <button class="kw-close" onclick="kwToggle()">✕</button>
+    </div>
+    <div class="kw-messages" id="kw-messages"></div>
+    <div class="kw-quick" id="kw-quick">
+      <button class="kw-qbtn" onclick="kwQuick('📋 Le menu ?')">📋 Menu</button>
+      <button class="kw-qbtn" onclick="kwQuick('⏰ Vos horaires ?')">⏰ Horaires</button>
+      <button class="kw-qbtn" onclick="kwQuick('🛵 Livraison ?')">🛵 Livraison</button>
+      <button class="kw-qbtn" onclick="kwQuick('📍 Où êtes-vous ?')">📍 Adresse</button>
+      <button class="kw-qbtn" onclick="kwQuick('🪑 Réserver une table')">🪑 Réserver</button>
+    </div>
+    <div class="kw-input-row">
+      <input class="kw-input" id="kw-input" placeholder="Posez votre question..." onkeydown="if(event.key==='Enter')kwSend()">
+      <button class="kw-send" id="kw-send" onclick="kwSend()">➤</button>
+    </div>
+    <div class="kw-powered">Propulsé par <strong>IA Claude</strong> · <strong>Ray Wav</strong></div>
+  </div>
+</div>
+
+<script>
+// ── NAV SCROLL ──
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').style.padding = window.scrollY > 50 ? '10px 5%' : '16px 5%';
+});
+
+// ── HAMBURGER ──
+function toggleMenu() {
+  const ul = document.getElementById('nav-links');
+  ul.style.display = ul.style.display === 'flex' ? 'none' : 'flex';
+  ul.style.flexDirection = 'column';
+  ul.style.position = 'absolute';
+  ul.style.top = '70px'; ul.style.left = '0'; ul.style.right = '0';
+  ul.style.background = 'rgba(13,6,3,.97)';
+  ul.style.padding = '20px 5%';
+  ul.style.borderBottom = '1px solid rgba(245,168,0,.15)';
+}
+
+// ── HORAIRE DU JOUR ──
+(function() {
+  const day = new Date().getDay(); // 0=dim,1=lun,...
+  const map = {1:'day-0',2:'day-2',3:'day-3',4:'day-4',5:'day-5',6:'day-6',0:'day-1'};
+  const el = document.getElementById(map[day]);
+  if(el) {
+    el.classList.add('today');
+    const dayEl = el.querySelector('.horaire-day');
+    if(dayEl) { dayEl.classList.add('today-label'); dayEl.textContent += ' (Aujourd\'hui)'; }
+    const badge = document.createElement('span');
+    badge.className = 'horaire-open'; badge.textContent = '● Ouvert';
+    el.appendChild(badge);
+  }
+})();
+
+// ── SCROLL REVEAL ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e,i) => {
+    if(e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i*80);
+  });
+}, {threshold:.1});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── FORMS ──
+function handleReservation(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type=submit]');
+  btn.textContent = '✅ Réservation envoyée !';
+  btn.style.background = 'linear-gradient(135deg,#16a34a,#15803d)';
+  btn.disabled = true;
+  setTimeout(() => { btn.textContent = '✅ Confirmer ma réservation'; btn.style.background=''; btn.disabled=false; e.target.reset(); }, 4000);
+}
+
+function handleContact(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type=submit]');
+  btn.textContent = '✅ Message envoyé !';
+  btn.style.background = 'linear-gradient(135deg,#16a34a,#15803d)';
+  btn.disabled = true;
+  setTimeout(() => { btn.textContent = '📨 Envoyer le message'; btn.style.background=''; btn.disabled=false; e.target.reset(); }, 4000);
+}
+
+// ── WIDGET IA ──
+(function() {
+  const SYSTEM = `Tu es l'assistant IA chaleureux de K'séne, le meilleur fast-food de Lomé au Togo. Spécialités : Crêpes, Grillades et Saveurs authentiques. Adresse : Sagbado, Route Sanol, Lomé, Togo. Code Maps : 54VP+GV Lomé. Tél : +228 93 23 97 97. WhatsApp : https://wa.me/22893239797. Menu complet : https://creperieksene.com/#menu. Horaires : Mardi au Dimanche 06h00–23h00, Lundi 09h00–21h30. Services : livraison sans contact, drive, terrasse, vente à emporter, traiteur, repas sur place. Parking gratuit. Convient aux familles et groupes. Réponds en français, de façon chaleureuse et concise. Utilise des emojis avec modération.`;
+
+  let history=[], opened=false, welcomed=false;
+
+  window.kwToggle = function() {
+    opened = !opened;
+    const win = document.getElementById('ksene-widget-window');
+    const btn = document.getElementById('ksene-widget-btn');
+    win.classList.toggle('open', opened);
+    btn.innerHTML = opened ? '✕' : '🤖<div class="widget-notif"></div>';
+    if(opened && !welcomed) {
+      welcomed = true;
+      setTimeout(() => kwAddMsg('bot', "👋 Bienvenue chez K'séne !\n\nJe suis votre assistant IA, disponible 24h/24. Comment puis-je vous aider aujourd'hui ? 🍽️"), 300);
+    }
+  };
+
+  window.kwSend = async function() {
+    const input = document.getElementById('kw-input');
+    const sendBtn = document.getElementById('kw-send');
+    const text = input.value.trim();
+    if(!text) return;
+    input.value = ''; sendBtn.disabled = true;
+    document.getElementById('kw-quick').style.display = 'none';
+    kwAddMsg('user', text);
+    history.push({role:'user', content:text});
+    kwShowTyping();
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({model:'claude-sonnet-4-20250514', max_tokens:500, system:SYSTEM, messages:history})
+      });
+      const data = await res.json();
+      const reply = data.content?.[0]?.text || "Désolé, réessayez ou appelez le +228 93 23 97 97 😊";
+      kwRemoveTyping(); kwAddMsg('bot', reply);
+      history.push({role:'assistant', content:reply});
+    } catch(err) {
+      kwRemoveTyping();
+      kwAddMsg('bot', "Une erreur s'est produite. Appelez-nous au +228 93 23 97 97 😊");
+    }
+    sendBtn.disabled = false; input.focus();
+  };
+
+  window.kwQuick = function(text) {
+    document.getElementById('kw-input').value = text;
+    kwSend();
+  };
+
+  function kwAddMsg(role, text) {
+    const el = document.getElementById('kw-messages');
+    const div = document.createElement('div');
+    div.className = `kw-msg ${role}`;
+    div.innerHTML = `<div class="kw-msg-av">${role==='bot'?'🍽️':'👤'}</div><div class="kw-bubble">${text.replace(/\n/g,'<br>')}</div>`;
+    el.appendChild(div); el.scrollTop = el.scrollHeight;
+  }
+
+  function kwShowTyping() {
+    const el = document.getElementById('kw-messages');
+    const div = document.createElement('div');
+    div.className='kw-msg bot'; div.id='kw-typing';
+    div.innerHTML=`<div class="kw-msg-av">🍽️</div><div class="kw-bubble"><div class="kw-typing"><span></span><span></span><span></span></div></div>`;
+    el.appendChild(div); el.scrollTop=el.scrollHeight;
+  }
+
+  function kwRemoveTyping() {
+    const t=document.getElementById('kw-typing'); if(t) t.remove();
+  }
+})();
+</script>
+</body>
+</html>
